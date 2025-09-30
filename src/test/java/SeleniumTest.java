@@ -48,11 +48,13 @@ public class SeleniumTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");  // Run without GUI
         options.addArguments("--disable-gpu");
-        // Wait up to 10 seconds when looking for any element
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        
 
 
         webDriver = new ChromeDriver(options);
+        
+        // Wait up to 10 seconds when looking for any element
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // Get file
         File file = new File("src/main/index.html");
