@@ -26,7 +26,9 @@ public class SeleniumTest {
     @Before
     public void setUp() {
         // Set up ChromeDriver path
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");//linux_64
+//        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");//linux_64
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+
 
         // Get file
         File file = new File("src/main/index.html");
@@ -34,7 +36,7 @@ public class SeleniumTest {
 
         // Create a new ChromeDriver instance
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
+        options.setBinary("/usr/bin/chromium-browser");
         webDriver = new ChromeDriver(options);
 
         // Open the HTML file
