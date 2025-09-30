@@ -58,7 +58,7 @@ public class SeleniumTest {
 
         // Get file
         File file = new File("src/main/index.html");
-        String path = "file://" + file.getAbsolutePath();
+        String path = "file:///" + file.getAbsolutePath();//added slash for file pathing issue?
 
         // Open the HTML file
         webDriver.get(path);
