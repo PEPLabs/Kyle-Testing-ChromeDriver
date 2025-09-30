@@ -37,7 +37,7 @@ public class SeleniumTest {
     private static final boolean IS_LINUX = OS_NAME.contains("linux");
     private static final boolean IS_MAC = OS_NAME.contains("mac");
   
-    @BeforeEach
+    @Before
     public void setUp() {
         try {
             printEnvironmentInfo();
@@ -503,7 +503,7 @@ public class SeleniumTest {
         }
     }
 
-    @AfterEach
+    @After
     public void tearDown() {
         System.out.println("\n=== TEARDOWN ===");
         cleanup();
