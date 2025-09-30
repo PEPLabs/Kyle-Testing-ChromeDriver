@@ -25,19 +25,30 @@ public class SeleniumTest {
      */
     @Before
     public void setUp() {
-        // Set up ChromeDriver path
-//        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");//linux_64
+
+
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary("/usr/bin/chromium-browser");
+        options.addArguments("--remote-allow-origins=*");
+        options.setBinary("/usr/bin/chromium-browser");
+        options.addArguments("--remote-allow-origins=*");
+
+        // Fix the user data directory issue
+        options.addArguments("--user-data-dir=/tmp/chrome-" + System.currentTimeMillis());
+
+        // Fix permission/display issues
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");  // Run without GUI
+        options.addArguments("--disable-gpu");
+
+        webDriver = new ChromeDriver(options);
 
         // Get file
         File file = new File("src/main/index.html");
         String path = "file://" + file.getAbsolutePath();
-
-        // Create a new ChromeDriver instance
-        ChromeOptions options = new ChromeOptions();
-        options.setBinary("/usr/bin/chromium-browser");
-        webDriver = new ChromeDriver(options);
 
         // Open the HTML file
         webDriver.get(path);
